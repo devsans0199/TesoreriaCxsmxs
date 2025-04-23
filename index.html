@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Alta</title>
+  <link rel="stylesheet" href="gothamInt.css"> <!-- Este es tu CSS con fuentes y variables -->
+
+  <style>
+    body {
+      font-family: var(--font-book);
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .formulario {
+      display: flex;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .columna {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .columna-izquierda {
+      width: 10%;
+      background-color: var(--azul-oscuro);
+    }
+
+    .columna-derecha {
+      width: 75%;
+    }
+
+    .columna-derecha h2 {
+      font-family: var(--font-bold);
+      color: var(--azul-base);
+      margin-top: 0;
+    }
+
+    .busqueda {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .busqueda input {
+      width: 70%;
+      padding: 8px;
+      font-size: 14px;
+      font-family: var(--font-light);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .busqueda button {
+      padding: 8px 16px;
+      font-family: var(--font-medium);
+      background-color: var(--rojo-oscuro);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .busqueda button:hover {
+      background-color: var(--rojo-base);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-book);
+      font-size: 14px;
+    }
+
+    table thead {
+      background-color: var(--azul-muy-claro);
+    }
+
+    table th, table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    table tr:hover {
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-contenido {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      width: 40%;
+      border-radius: 8px;
+      position: relative;
+      border-top: 5px solid var(--azul-base);
+      font-family: var(--font-light);
+    }
+
+    .cerrar {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: #aaa;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .cerrar:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="formulario">
+    <div class="columna columna-izquierda">
+      <!-- Espacio visual (10%) -->
+    </div>
+
+    <div class="columna columna-derecha">
+      <h2>Alta</h2>
+
+      <div class="busqueda">
+        <input type="text" id="buscador" placeholder="Buscar...">
+        <button id="salir">Salir</button>
+      </div>
+
+      <table id="tabla-registros">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="registro">
+            <td>1</td>
+            <td>Juan Hernández</td>
+            <td>juan.hernandez@gob.mx</td>
+          </tr>
+          <tr class="registro">
+            <td>2</td>
+            <td>Ana Torres</td>
+            <td>ana.torres@gob.mx</td>
+          </tr>
+          <tr class="registro">
+            <td>3</td>
+            <td>Pedro López</td>
+            <td>pedro.lopez@gob.mx</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" id="cerrar-modal">&times;</span>
+      <p id="modal-texto"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

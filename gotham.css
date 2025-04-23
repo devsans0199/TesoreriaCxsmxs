@@ -1,0 +1,63 @@
+/* Definir las fuentes */
+@font-face {
+    font-family: 'Gotham Black';
+    src: url('../font/Gotham-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham Bold';
+    src: url('../font/Gotham-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: url('../font/Gotham-Book.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gotham Light';
+    src: url('../font/Gotham-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gotham XLight';
+    src: url('../font/Gotham-XLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gotham XLight Italic';
+    src: url('../font/Gotham-XLightItalic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url('../font/GothamMedium.ttf') format('truetype');
+}
+
+/* Definir variables CSS para las fuentes */
+:root {
+    --font-black: 'Gotham Black', sans-serif;
+    --font-bold: 'Gotham Bold', sans-serif;
+    --font-book: 'Gotham Book', sans-serif;
+    --font-light: 'Gotham Light', sans-serif;
+    --font-xlight: 'Gotham XLight', sans-serif;
+    --font-xlight-italic: 'Gotham XLight Italic', sans-serif;
+    --font-medium: 'Gotham Medium', sans-serif;
+    /* Azules */
+    --azul-base: #005493;
+    --azul-claro: #337AB7;
+    --azul-pastel: #66A3D2;
+    --azul-oscuro: #003366;
+    --azul-intermedio: #1A6FA3;
+    --azul-muy-claro: #99C2E0;
+    --azul-muy-oscuro: #002244;
+
+    /* Rojos */
+    --rojo-base: #FF2600;
+    --rojo-claro: #FF5C33;
+    --rojo-pastel: #FF8C66;
+    --rojo-oscuro: #CC0000;
+    --rojo-intermedio: #FF3D1A;
+    --rojo-muy-claro: #FFB399;
+    --rojo-muy-oscuro: #990000;
+}
