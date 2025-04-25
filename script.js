@@ -1,46 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const registros = document.querySelectorAll('.registro');
-    const modal = document.getElementById('modal');
-    const modalTexto = document.getElementById('modal-texto');
-    const cerrar = document.getElementById('cerrar-modal');
-    const salir = document.getElementById('salir');
-    const buscador = document.getElementById('buscador');
-    const filas = document.querySelectorAll('#tabla-registros tbody tr');
-  
-    // Mostrar datos en el modal al hacer clic en un registro
-    registros.forEach(fila => {
-      fila.addEventListener('click', () => {
-        const datos = Array.from(fila.children).map(td => td.textContent);
-        modalTexto.textContent = `ID: ${datos[0]} | Nombre: ${datos[1]} | Email: ${datos[2]}`;
-        modal.style.display = 'block';
-      });
+// Datos simulados
+const records = [
+  { id: 1, nombre: "Cliente Juan Pérez" },
+  { id: 2, nombre: "Cliente Ana López" },
+  { id: 3, nombre: "Cliente Carlos Martínez" },
+];
+
+// Referencias
+const container = document.getElementById("records-container");
+const searchInput = document.getElementById("search");
+
+// Función para renderizar registros
+function renderRecords(filter = "") {
+  container.innerHTML = "";
+
+  records
+    .filter(record => record.nombre.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(record => {
+      const div = document.createElement("div");
+      div.className = "record";
+      div.innerHTML = `
+        <span>${record.nombre}</span>
+        <div class="record-buttons">
+          <button class="modify-btn" onclick="modifyRecord(${record.id})">Modificar</button>
+          <button class="delete-btn" onclick="deleteRecord(${record.id})">Eliminar</button>
+        </div>
+      `;
+      container.appendChild(div);
     });
-  
-    // Cerrar modal
-    cerrar.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-  
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-  
-    // Salir
-    salir.addEventListener('click', () => {
-      alert('Saliendo del sistema...');
-      // Aquí podrías redirigir o cerrar sesión
-      // window.location.href = "logout.html";
-    });
-  
-    // Filtrado en vivo del buscador
-    buscador.addEventListener('input', () => {
-      const filtro = buscador.value.toLowerCase();
-      filas.forEach(fila => {
-        const texto = fila.textContent.toLowerCase();
-        fila.style.display = texto.includes(filtro) ? '' : 'none';
-      });
-    });
-  });
-  
+}
+
+// Función para modificar un registro
+function modifyRecord(id) {
+  const nuevoNombre = prompt("Ingrese el nuevo nombre:");
+  if (nuevoNombre) {
+    const index = records.findIndex(r => r.id === id);
+    if (index !== -1) {
+      records[index].nombre = nuevoNombre;
+      renderRecords(searchInput.value);
+    }
+  }
+}
+
+// Función para eliminar un registro
+function deleteRecord(id) {
+  const confirmDelete = confirm("¿Seguro que deseas eliminar este registro?");
+  if (confirmDelete) {
+    const index = records.findIndex(r => r.id === id);
+    if (index !== -1) {
+      records.splice(index, 1);
+      renderRecords(searchInput.value);
+    }
+  }
+}
+
+// Buscar mientras escribe
+searchInput.addEventListener("input", (e) => {
+  renderRecords(e.target.value);
+});
+
+// Botón de salir
+document.getElementById("logout").addEventListener("click", () => {
+  alert("Has salido del sistema.");
+  // Puedes agregar aquí redireccionamiento si quieres
+});
+
+// Inicializar vista
+renderRecords();

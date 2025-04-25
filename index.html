@@ -2,185 +2,95 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Formulario de Alta</title>
-  <link rel="stylesheet" href="gothamInt.css"> <!-- Este es tu CSS con fuentes y variables -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión de Registros</title>
+  <link rel="stylesheet" href="gotham.css">
   <style>
     body {
       font-family: var(--font-book);
-      background-color: #f2f2f2;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background-color: #f8f9fa;
     }
 
-    .formulario {
+    header {
       display: flex;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--azul-base);
     }
 
-    .columna {
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .columna-izquierda {
-      width: 10%;
-      background-color: var(--azul-oscuro);
-    }
-
-    .columna-derecha {
-      width: 75%;
-    }
-
-    .columna-derecha h2 {
-      font-family: var(--font-bold);
-      color: var(--azul-base);
-      margin-top: 0;
-    }
-
-    .busqueda {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .busqueda input {
-      width: 70%;
-      padding: 8px;
-      font-size: 14px;
+    #search {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
       font-family: var(--font-light);
-      border: 1px solid #ccc;
-      border-radius: 4px;
     }
 
-    .busqueda button {
-      padding: 8px 16px;
-      font-family: var(--font-medium);
-      background-color: var(--rojo-oscuro);
+    #logout {
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--rojo-base);
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
+      font-family: var(--font-bold);
     }
 
-    .busqueda button:hover {
-      background-color: var(--rojo-base);
+    main {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-book);
-      font-size: 14px;
-    }
-
-    table thead {
-      background-color: var(--azul-muy-claro);
-    }
-
-    table th, table td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ccc;
-    }
-
-    table tr:hover {
-      background-color: #f0f0f0;
-      cursor: pointer;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-    }
-
-    .modal-contenido {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      width: 40%;
+    .record {
+      background: white;
+      border: 1px solid var(--azul-claro);
+      padding: 1rem;
       border-radius: 8px;
-      position: relative;
-      border-top: 5px solid var(--azul-base);
-      font-family: var(--font-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-book);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .cerrar {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      color: #aaa;
-      font-size: 24px;
+    .record-buttons button {
+      margin-left: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+      font-family: var(--font-medium);
     }
 
-    .cerrar:hover {
-      color: #000;
+    .modify-btn {
+      background-color: var(--azul-pastel);
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: var(--rojo-intermedio);
+      color: white;
     }
   </style>
 </head>
 <body>
 
-  <div class="formulario">
-    <div class="columna columna-izquierda">
-      <!-- Espacio visual (10%) -->
-    </div>
+<header>
+  <input type="text" id="search" placeholder="Buscar...">
+  <button id="logout">Salir</button>
+</header>
 
-    <div class="columna columna-derecha">
-      <h2>Alta</h2>
+<main id="records-container">
+  <!-- Aquí se cargan los registros dinámicamente -->
+</main>
 
-      <div class="busqueda">
-        <input type="text" id="buscador" placeholder="Buscar...">
-        <button id="salir">Salir</button>
-      </div>
+<script src="script.js"></script>
 
-      <table id="tabla-registros">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="registro">
-            <td>1</td>
-            <td>Juan Hernández</td>
-            <td>juan.hernandez@gob.mx</td>
-          </tr>
-          <tr class="registro">
-            <td>2</td>
-            <td>Ana Torres</td>
-            <td>ana.torres@gob.mx</td>
-          </tr>
-          <tr class="registro">
-            <td>3</td>
-            <td>Pedro López</td>
-            <td>pedro.lopez@gob.mx</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" id="cerrar-modal">&times;</span>
-      <p id="modal-texto"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
