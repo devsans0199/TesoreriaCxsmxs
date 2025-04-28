@@ -1,0 +1,172 @@
+/* Estilo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Encabezado */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0066cc;
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: slideDown 0.5s ease;
+  }
+  
+  /* Buscador */
+  .search-box {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    border: none;
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .search-box button {
+    padding: 10px 15px;
+    background-color: #0052a3;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-box button:hover {
+    background-color: #003d80;
+  }
+  
+  /* Botón salir */
+  .logout-btn {
+    background-color: #ff4d4d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Contenedor principal */
+  .main {
+    padding: 30px;
+  }
+  
+  /* Botón nuevo registro */
+  .table-controls {
+    margin-bottom: 20px;
+  }
+  
+  .add-btn {
+    background-color: #28a745;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Tabla */
+  .table-wrapper {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    overflow-x: auto;
+    animation: fadeIn 1s ease;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #0066cc;
+    color: white;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Acciones */
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .actions button:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Botones específicos */
+  .editBtn i {
+    color: #ffc107;
+  }
+  
+  .editBtn:hover i {
+    color: #e0a800;
+  }
+  
+  .deleteBtn i {
+    color: #dc3545;
+  }
+  
+  .deleteBtn:hover i {
+    color: #c82333;
+  }
+  
+  /* Animaciones */
+  @keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .search-box {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .logout-btn {
+      width: 100%;
+    }
+  }
+  

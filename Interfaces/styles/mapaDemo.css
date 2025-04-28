@@ -1,0 +1,314 @@
+/* Reinicio básico */
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    font-family: var(--font-book), sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    -webkit-text-size-adjust: 100%;
+}
+
+header {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+header img {
+    max-width: 80vw;
+    max-height: 40px;
+    display: inline-block;
+}
+
+/* Contenedor principal de contenido */
+.content {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2%;
+    width: 100%;
+    align-items: center;
+}
+
+/* Cartograma */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(11, 7vw);
+    grid-template-rows: repeat(7, 7vw);
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.cuadro {
+    font-family: var(--font-medium), sans-serif;
+    font-size: 1rem;
+    /* Aumenta el tamaño de la fuente */
+    color: #000;
+    /* Cambia el color del texto a negro para mayor contraste */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #c5c5c5;
+    transition: background-color 1s ease;
+}
+
+.cuadro span {
+    font-size: 1rem; 
+  }
+
+.info {
+    /* Asegura que pueda crecer para alojar varios párrafos */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    padding: 5px;
+    z-index: 10;
+    width: max-content;
+    height: max-content;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Muestra la cajita al hover (en escritorio) */
+.cuadro:hover .info {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Al hacer clic en móvil, se agrega .active para mostrarla */
+.cuadro.active .info {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.info p {
+    /* Para que no se junten si Safari decide meter spacing extra */
+    margin: 0;
+    line-height: 1.2;
+    /* Ajusta según tu gusto */
+}
+
+/* Contenedor para la tabla */
+.table-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    max-width: 300px;
+    width: 80%;
+    margin-right: 5% !important;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+th,
+td {
+    border: 0.2px solid #000;
+    padding: 4px;
+    text-align: left;
+}
+
+td {
+    font-size: 0.8rem;
+}
+
+/* Footer con logo */
+footer {
+    font-family: var(--font-light), sans-serif !important;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer div img {
+    max-width: 150px;
+}
+
+/* Responsive: en pantallas pequeñas, centramos los elementos */
+@media (max-width: 300px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-container {
+        justify-content: center;
+        max-width: 70%;
+    }
+
+    .cuadro {
+        font-size: 0.5rem !important;
+    }
+}
+
+@media (max-width: 699px) {
+    .content {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-container {
+        justify-content: center;
+        max-width: 70%;
+    }
+
+    .cuadro {
+        font-size: 0.5rem !important;
+    }
+
+    footer {
+        font-size: 0.7rem;
+        border-top: 1px solid #ccc;
+        margin-top: 70px;
+    }
+
+    th,
+    td {
+        font-size: 0.6rem;
+    }
+
+    td {
+        font-size: 0.48rem;
+    }
+}
+
+@media (min-width: 700px) {
+    .cuadro {
+        font-size: 1rem !important;
+    }
+
+    .content {
+        justify-content: center !important;
+    }
+
+    header img {
+        max-height: 70px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(11, 6vw);
+        grid-template-rows: repeat(7, 6vw);
+    }
+
+    footer {
+        font-size: 0.7rem;
+        border-top: 1px solid #ccc;
+        margin-top: 70px;
+    }
+
+    th,
+    td {
+        font-size: 0.75rem;
+    }
+
+    td {
+        font-size: 0.55rem;
+    }
+}
+
+@media (min-width: 999px) {
+    .cuadro {
+        font-size: 1.1rem !important;
+    }
+
+    .content {
+        justify-content: center !important;
+        align-items: center;
+    }
+
+    header img {
+        max-height: 70px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(11, 5vw);
+        grid-template-rows: repeat(7, 5vw);
+    }
+
+    th,
+    td {
+        font-size: 0.8rem;
+    }
+
+    td {
+        font-size: 0.6rem;
+    }
+}
+
+.cuadro {
+    background-color: #c5c5c5;
+    color: #fff;
+    transition: background-color 1s ease;
+}
+
+/* 2) Cada partido define su variable de color */
+.cuadro.movimiento-ciudadano {
+    --partyColor: #FFA500;
+}
+
+.cuadro.pri {
+    --partyColor: #00893C;
+}
+
+.cuadro.pan {
+    --partyColor: #006ec7;
+}
+
+.cuadro.morena {
+    --partyColor: #87003B;
+}
+
+.cuadro.pvem {
+    --partyColor: #00A878;
+}
+
+.cuadro.pes {
+    --partyColor: #6A0DAD;
+}
+
+/* Cuando hacemos hover/active/focus, se ve el color del partido inmediatamente */
+.cuadro:hover,
+.cuadro:active,
+.cuadro:focus {
+    background-color: var(--partyColor, #c5c5c5);
+}
